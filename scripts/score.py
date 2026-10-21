@@ -95,7 +95,10 @@ def score_row(row, today):
     if tools is not None and tools >= 2:
         signal += 10; breakdown.append(f"{tools} data tools +10")
 
-    return fit, signal, tier_for(fit + signal), breakdown, flags
+    tier = tier_for(fit + signal)
+    if row.get("is_b2b_saas_ai", "").strip().lower() == "no" and tier in {"Tier 1", "Tier 2"}:
+        tier = "Tier 3"; breakdown.append("not B2B SaaS/AI: capped at Tier 3")
+    return fit, signal, tier, breakdown, flags
 
 
 def main(argv):

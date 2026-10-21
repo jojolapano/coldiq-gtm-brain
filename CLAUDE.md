@@ -6,7 +6,8 @@ This file is the map. Details live in `brain/` and `.claude/skills/`.
 ## 0. Current state (update every session)
 - Week of: YYYY-MM-DD
 - Live campaign: `fr-es-gtm-hiring-v1` (status: building | live | analysing)
-- Credits left (ColdIQ): ___ / 300 (free tier)
+- Credits left (ColdIQ): 275.15 / 300 (free tier)
+- Budget: free tier only — full run capped at ~20 accounts (live prices: search_jobs 0.74/job, enrich_company 3.5/company)
 - Top priority this session: ___
 
 ## 1. Mission
@@ -60,6 +61,8 @@ Secondary goal: dogfood the API and log product feedback in `learnings.md`.
 - Tier 2: 60–74 → signal-based template, 2 buyers max
 - Tier 3: 45–59 → nurture list, no sequence yet
 - DQ: < 45, or any disqualifier below
+- Cap: `is_b2b_saas_ai = no` → max Tier 3, not DQ (unknown is not capped). Added 2026-10-21,
+  see `learnings.md` § Rubric changes.
 
 ### Disqualifiers
 - < 10 employees (ICP is not SMB/DIY)

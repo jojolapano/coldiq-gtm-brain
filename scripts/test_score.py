@@ -48,6 +48,22 @@ def test_existing_customer_is_dq():
     assert tier == "DQ" and "customer" in breakdown[0]
 
 
+def test_not_saas_capped_at_tier3():
+    fit, signal, tier, breakdown, _ = run(is_b2b_saas_ai="no")  # 35 + 40 = 75
+    assert (fit + signal, tier) == (75, "Tier 3"), (fit + signal, tier)
+    assert "capped at Tier 3" in breakdown[-1]
+
+
+def test_not_saas_low_score_stays_dq():
+    *_, tier, _, _ = run(is_b2b_saas_ai="no", posted_date="2026-07-01", funding_date="")  # 35 + 0
+    assert tier == "DQ"
+
+
+def test_unknown_saas_not_capped():
+    *_, tier, _, _ = run(is_b2b_saas_ai="")  # 35 + 40 = 75
+    assert tier == "Tier 1"
+
+
 def test_other_eu_hq():
     fit, *_ = run(hq_country="DE")
     assert fit == 45
