@@ -24,6 +24,16 @@
   `data_tools_count` mostly come from the job posting, not the enrichment.
 - **Data conflict:** stationf.co shows headcount 280 but range "11-50 employees" in the same record.
 
+### 2026-10-21 — step 3, `find_people` (campaign fr-es-gtm-hiring-v1)
+- **Confirmed:** `find_people` (auto route) answered from ColdIQ's own data for a 2-domain +
+  9-title search: 3 people, 0.063 credits (balance 275.15 → 275.09). Far cheaper than the
+  9.91 cr/call shown for direct `/apollo/people/search`.
+- **Gap:** no price is shown before an auto-routed `find_people` call (only provider endpoints list one),
+  so CLAUDE.md rule 5's "confirm the price first" can't be met exactly for this tool.
+- **Coverage:** no Head of Growth / RevOps / VP Sales found at either 26–34 person account; only founders.
+- **Process note:** open step 2 flags accepted by the user on 2026-10-21: Reflect (no tech stack),
+  AVEST (no outbound evidence, `has_outbound_motion` left unknown, stays Tier 2).
+
 ## Rubric changes
 
 ### 2026-10-21 — cap non-SaaS accounts at Tier 3 (CLAUDE.md §4)

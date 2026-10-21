@@ -16,9 +16,12 @@ description: >
 
 ## Procedure
 1. Stop if `02_scored` has unresolved flags on Tier 1–2 rows (CLAUDE.md §7). List them.
+   A flag counts as resolved if the user accepted it (logged in `learnings.md` or stated
+   in the conversation).
 2. Keep Tier 1 and Tier 2 rows only. Tier 3 and DQ get no contacts.
-3. Load `coldiq:icp-personas` for the buying-committee method. Our buyer map (CLAUDE.md §5)
-   wins over its generic roles (rule 8):
+3. Load `coldiq:icp-personas` for the buying-committee method only. Never call
+   `limadata.prospect.employees` (25 cr in the playbook) without asking the user first.
+   Our buyer map (CLAUDE.md §5) wins over its generic roles (rule 8):
    1. Hiring manager of the open GTM role, when the posting or the company names them.
    2. Head of Growth / Head of RevOps.
    3. VP Sales / CRO.
@@ -56,3 +59,4 @@ One row per contact.
 - Find or guess emails or phones here: that is step 4 (`enrich`).
 - Infer a person from a name pattern or invent a title (rule 2).
 - Add contacts for Tier 3 or DQ accounts.
+- Write people's names anywhere outside `data/`.
