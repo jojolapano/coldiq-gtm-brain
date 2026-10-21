@@ -1,0 +1,11 @@
+
+# Secrets
+.env
+.env.*
+
+# Données de prospection (données personnelles, jamais publiées)
+data/**
+!data/.gitkeep
+
+# macOS
+.DS_Store
