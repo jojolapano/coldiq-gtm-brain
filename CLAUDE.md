@@ -6,7 +6,7 @@ This file is the map. Details live in `brain/` and `.claude/skills/`.
 ## 0. Current state (update every session)
 - Week of: YYYY-MM-DD
 - Live campaign: `fr-es-gtm-hiring-v1` (status: building | live | analysing)
-- Credits left (ColdIQ API): ___ / 300
+- Credits left (ColdIQ): ___ / 300 (free tier)
 - Top priority this session: ___
 
 ## 1. Mission
@@ -27,8 +27,15 @@ Secondary goal: dogfood the API and log product feedback in `learnings.md`.
 4. Never send anything. Step 6 exports a file; a human launches the campaign.
 5. Run every paid call on a 5-row sample first, show the cost, wait for "go".
 6. Secrets live in `.env` only. Never print, log or commit API keys.
+   Never create a project-scoped `.mcp.json` in this repo.
 7. Never claim a result that is not written in `brain/proof.md`.
-8. When a rule here conflicts with a skill, this file wins. Flag the conflict.
+8. When a rule here conflicts with a skill (ours or `coldiq:`), this file wins. Flag the conflict.
+9. Never call a skill or endpoint that sends, uploads, publishes or purchases on an external
+   platform. Forbidden skills: `coldiq:instantly-api`, `coldiq:emailbison`,
+   `coldiq:campaign-delivery` (phase 8 creates, loads and activates Instantly campaigns),
+   `coldiq:email-infra` (orders inboxes/domains, connects mailboxes, enables warmup),
+   `coldiq:ad-audiences` (its flow uploads hashed emails to ad platforms).
+   Step 6 produces a file only.
 
 ## 4. ICP scoring (step 2) — total /100
 ### Fit score /50
@@ -63,22 +70,27 @@ Priority order: Head of Growth / Head of RevOps → VP Sales / CRO → Founder (
 The hiring manager of the open GTM role is always buyer #1 when identifiable.
 
 ## 6. Tool preferences
-- Data, enrichment, signals: ColdIQ Unified API (MCP) first.
-  Discover available endpoints via the MCP tool list. Do not guess endpoint names.
+- Data, enrichment, signals: ColdIQ MCP (OAuth, hosted at mcp.coldiq.com).
+- Playbooks: the ColdIQ plugin skills (`coldiq:*`). Our skills ORCHESTRATE them:
+  they add our context (brain/), our rules (this file) and our file contracts.
+  Never copy a `coldiq:` skill's endpoint instructions into our skills.
+- Endpoint paths and credit costs in the ColdIQ skills are marked unverified by ColdIQ.
+  Before a paid call, confirm the price shown by the platform. When an endpoint is confirmed
+  (or fails), log it in `learnings.md` under `## Product feedback`.
 - Transformations and scoring: Python scripts in `scripts/`, outputs in `data/`.
 - File format: CSV, one row per account, one per contact. UTF-8.
 - Naming: `data/<campaign>/<step>_<YYYYMMDD>.csv`
 
 ## 7. Workflow (one skill per step)
-| Step | Skill | Input | Output |
-|---|---|---|---|
-| 1 Detect signals | `detect-signals` | ICP + keywords | `01_signals.csv` |
-| 2 Score accounts | `score-accounts` | `01_signals.csv` | `02_scored.csv` |
-| 3 Find buyers | `find-buyers` | Tier 1–2 rows | `03_contacts.csv` |
-| 4 Enrich | `enrich` | `03_contacts.csv` | `04_enriched.csv` |
-| 5 Write copy | `write-copy` | `04_enriched.csv` + voice | `05_copy.csv` |
-| 6 Export campaign | `push-campaign` | `05_copy.csv` | `06_campaign_export.csv` |
-| 7 Learn | `learn` | campaign results | `learnings.md` + rule updates |
+| Step | Our skill | Delegates to (`coldiq:`) | Input | Output |
+|---|---|---|---|---|
+| 1 Detect signals | `detect-signals` | `signal-detection` | ICP + keywords | `01_signals.csv` |
+| 2 Score accounts | `score-accounts` | `tam-scoring` (our rubric in §4 wins) | `01_signals.csv` | `02_scored.csv` |
+| 3 Find buyers | `find-buyers` | `icp-personas`, `apollo-search` | Tier 1–2 rows | `03_contacts.csv` |
+| 4 Enrich | `enrich` | `contact-enrichment`, `list-dedup` | `03_contacts.csv` | `04_enriched.csv` |
+| 5 Write copy | `write-copy` | `cold-email-copy` | `04_enriched.csv` + voice | `05_copy.csv` |
+| 6 Export campaign | `push-campaign` | none (export only, rule 9) | `05_copy.csv` | `06_campaign_export.csv` |
+| 7 Learn | `learn` | none | campaign results | `learnings.md` + rule updates |
 
 Never skip a step. Never run step N+1 if step N output has unresolved flags.
 
@@ -88,6 +100,8 @@ Never skip a step. Never run step N+1 if step N output has unresolved flags.
 - Line 1 references the signal (the open role), never flattery.
 - Angle: "you are hiring a GTM engineer → here is the stack they will need on day 1".
 - Banned: "I hope this finds you well", "revolutionise", "game-changer", fake urgency.
+- Format: "3 campaign ideas" — the email is 3 bullets of plays specific to the prospect's
+  signal, written for their GTM team, + one soft question. No meeting ask in email 1.
 - Output 2 variants per Tier 1 contact for A/B testing.
 
 ## 9. Learning loop (step 7)
