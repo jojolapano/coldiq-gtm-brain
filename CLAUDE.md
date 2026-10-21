@@ -36,6 +36,7 @@ Secondary goal: dogfood the API and log product feedback in `learnings.md`.
    `coldiq:email-infra` (orders inboxes/domains, connects mailboxes, enables warmup),
    `coldiq:ad-audiences` (its flow uploads hashed emails to ad platforms).
    Step 6 produces a file only.
+10. Work on main only.
 
 ## 4. ICP scoring (step 2) — total /100
 ### Fit score /50
