@@ -37,10 +37,14 @@ description: >
 | role_title | exact title of the posting |
 | posted_date | YYYY-MM-DD; empty if unknown + flag |
 | signal_url | link to the posting (mandatory, rule 3) |
+| hiring_manager_name | only if the posting text names the hiring manager, copied as written; else empty (no flag) |
 | source_tool | MCP tool used |
 | detected_at | today, YYYY-MM-DD |
 | flags | semicolon-separated issues, empty if none |
 
 ## Never
 - Invent a posting date, a domain or a URL (rule 2).
+- Guess the hiring manager from a LinkedIn search, the poster's profile or a title (rule 2).
+- Write a person's name anywhere outside `data/` (gitignored: skills, `learnings.md`,
+  commit messages and chat summaries use the company and role instead).
 - Enrich companies here: it costs credits and belongs to step 2.

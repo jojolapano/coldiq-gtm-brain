@@ -33,6 +33,9 @@
 - **Coverage:** no Head of Growth / RevOps / VP Sales found at either 26–34 person account; only founders.
 - **Process note:** open step 2 flags accepted by the user on 2026-10-21: Reflect (no tech stack),
   AVEST (no outbound evidence, `has_outbound_motion` left unknown, stays Tier 2).
+- **Process note:** open step 3 flags accepted by the user on 2026-10-22 for all 3 contacts in
+  `03_contacts_20261021` (Reflect: 2, AVEST: 1): "hiring manager not identified in step 1 data"
+  and "no Head of Growth/RevOps or VP Sales/CRO found". Founders kept as buyers (§5, < 50 employees).
 
 ## Rubric changes
 
