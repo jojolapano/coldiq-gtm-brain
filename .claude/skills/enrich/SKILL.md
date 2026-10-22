@@ -50,5 +50,4 @@ One row per contact. All `03_contacts` columns, plus:
 - Guess or build an email from a name pattern (rule 2). No result means an empty email.
 - Enrich contacts from Tier 3 or DQ accounts, or contacts not in `03_contacts`.
 - Send, upload or load contacts into a sending tool (rule 9). Step 6 exports a file only.
-- Write people's names, emails or LinkedIn URLs anywhere outside `data/`
-  (`learnings.md`: counts and company names only).
+- Write people's names, emails or LinkedIn URLs anywhere outside data/ (learnings.md: counts and company names only).

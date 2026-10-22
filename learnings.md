@@ -31,11 +31,30 @@
 - **Gap:** no price is shown before an auto-routed `find_people` call (only provider endpoints list one),
   so CLAUDE.md rule 5's "confirm the price first" can't be met exactly for this tool.
 - **Coverage:** no Head of Growth / RevOps / VP Sales found at either 26–34 person account; only founders.
+- **2026-10-22 follow-up (AVEST):** `find_people` by domain + seniority (founder…director) instead of
+  titles: 5 people, 0.104 cr (0.021/row, balance 275.09 → 274.98). Found a Head of Sales the title
+  search missed ("Head of Sales" was not in the list). Searching by seniority catches title variants
+  at small accounts for almost nothing.
 - **Process note:** open step 2 flags accepted by the user on 2026-10-21: Reflect (no tech stack),
   AVEST (no outbound evidence, `has_outbound_motion` left unknown, stays Tier 2).
 - **Process note:** open step 3 flags accepted by the user on 2026-10-22 for all 3 contacts in
   `03_contacts_20261021` (Reflect: 2, AVEST: 1): "hiring manager not identified in step 1 data"
   and "no Head of Growth/RevOps or VP Sales/CRO found". Founders kept as buyers (§5, < 50 employees).
+  Also accepted on 2026-10-22: AVEST Head of Sales flag "Head of Sales mapped to rank 3 (VP Sales/CRO)".
+
+### 2026-10-22 — step 4, `find_emails` (campaign fr-es-gtm-hiring-v1)
+- **Confirmed:** `find_emails` (auto waterfall, `max_credits: 5`) found 4/4 valid emails on the account
+  domain for 5.06 cr (balance 274.98 → 269.93). 3 came from ColdIQ's own data at 0.021 cr each;
+  1 needed Findymail (3.57) + BounceBan verify (0.714). Charge-on-success held: misses cost 0.
+- **Inconsistent verification:** 2 of the 3 own-data hits (Reflect) came back `valid` from a stored check
+  dated 2026-09-20 with no fresh verify; the 3rd (AVEST) got a live BounceBan check.
+  `valid` does not always mean "checked today".
+- **Good guard:** ColdIQ's own data returned an off-domain email for one AVEST contact; the waterfall
+  rejected it (`off_domain`), refunded it and moved to the next provider.
+- **Gap:** no price is shown before an auto-routed `find_emails` call, only the per-provider list
+  prices (same as `find_people`).
+- **Stale doc:** `coldiq:contact-enrichment` lists `limadata.find.work_email` at 1 cr (live 3.5) and
+  `findymail.verify` at 1 cr (BounceBan verify live 0.71).
 
 ## Rubric changes
 

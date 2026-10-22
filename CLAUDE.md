@@ -6,7 +6,7 @@ This file is the map. Details live in `brain/` and `.claude/skills/`.
 ## 0. Current state (update every session)
 - Week of: YYYY-MM-DD
 - Live campaign: `fr-es-gtm-hiring-v1` (status: building | live | analysing)
-- Credits left (ColdIQ): 275.09 / 300 (free tier)
+- Credits left (ColdIQ): 269.93 / 300 (free tier)
 - Budget: free tier only — full run capped at ~20 accounts (live prices: search_jobs 0.74/job, enrich_company 3.5/company)
 - Top priority this session: ___
 
