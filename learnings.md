@@ -56,6 +56,10 @@
 - **Stale doc:** `coldiq:contact-enrichment` lists `limadata.find.work_email` at 1 cr (live 3.5) and
   `findymail.verify` at 1 cr (BounceBan verify live 0.71).
 
+### 2026-10-22 — step 5, `coldiq:cold-email-copy` (campaign fr-es-gtm-hiring-v1)
+- **Conflict (rule 8):** the skill lists "lists of three" as a machine-writing tell and makes email 2
+  "the platform"; CLAUDE.md §8 requires 3 bullets and one new idea in email 2. Our rules applied.
+
 ## Rubric changes
 
 ### 2026-10-21 — cap non-SaaS accounts at Tier 3 (CLAUDE.md §4)
@@ -65,3 +69,23 @@
   outweighed the missing 15 SaaS points. Without a cap it would get buyers and copy in steps 3–5.
 - **Note:** decided by the user, not from send data (CLAUDE.md §9 asks for >= 50 sends per variant
   for learning-loop changes). Revisit after the first campaign results.
+
+## Runs
+
+### 2026-10-22 — fr-es-gtm-hiring-v1, steps 1–6 (demo run, not sent)
+- **Volumes:** 10 job postings bought → 01: 5 accounts kept (+3 overflow) → 02: 5 scored
+  (Tier 1: 1, Tier 2: 1, Tier 3: 3, DQ: 0) → 03: 4 contacts (Reflect 2, AVEST 2) →
+  04: 4/4 valid emails → 05: 4 sequences, 2 emails each, A/B on Tier 1 → 06: 8 export rows.
+- **Credits:** step 1: 7.35 | step 2: 17.50 | step 3: 0.17 | step 4: 5.06 | steps 5–7: 0 |
+  total 30.07 (300 → 269.93). About 15 credits per Tier 1–2 account reached.
+- **Copy:** validator 4/4. Reflect ideas rewritten for Reflect's own buyers (DRH, DAF) from a
+  user-supplied description (Crunchbase, LinkedIn company page, Maddyness), because 02_enriched
+  holds no company description column.
+- **Reply results:** none, campaign not sent (demo).
+- **Rule changes proposed (not applied, no send data yet):**
+  1. find-buyers: search by domain + seniority before the title list. Evidence: the title search
+     missed AVEST's Head of Sales; the seniority search found it for 0.10 cr.
+  2. score-accounts: keep a `company_description` column in 02 so step 5 can write
+     market-specific ideas without a manual lookup.
+  3. write-copy: no idea that depends on detecting non-website tools (ATS, HRIS, sequencers)
+     until a tech-stack call proves it. Evidence: step 2 stacks showed website tools only.
